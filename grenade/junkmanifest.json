@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions of the world!",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup_hello.html",
+    "default_icon": "images/pretzel_grenade_128.png"
+  },
+   "icons": {
+    "16": "images/pretzel_grenade_16.png",
+    "32": "images/pretzel_grenade_32.png",
+    "48": "images/pretzel_grenade_48.png",
+    "128": "images/pretzel_grenade_128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/pretzel_grenade.js"],
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*"
+      ]
+    }
+  ]
+}
