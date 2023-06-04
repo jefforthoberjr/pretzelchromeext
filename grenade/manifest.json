@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Word Grenade",
   "description": "Blow up words on the page!",
-  "version": "1.5",
+  "version": "1.32",
    "icons": {
     "16": "images/pretzel_grenade_16.png",
     "32": "images/pretzel_grenade_32.png",
