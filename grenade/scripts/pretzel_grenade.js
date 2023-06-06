@@ -1,78 +1,25 @@
-const article = document.querySelector("article");
 
-if (article != null) {
-  console.log("DEBUG: " + "found an article " + article)
-  // if (article.hasAttribute('id')) {
-    console.log("  DEBUG: " + "has an id " + article.getAttribute("id"))
-    console.log("  DEBUG: " + "has an id " + article.id)
-  // }
+var all = document.getElementsByTagName("*");
+//All objs returneed by this are nodeType == ELEMENT_NODE
+// but some of its children may be nodeType == TEXT_NODE
 
-  // if (article.hasAttribute('nodeName')){
-    console.log("  DEBUG: " + "nodeName " + article.getAttribute("nodeName"))
-    console.log("  DEBUG: " + "nodeName " + article.nodeName)
-  // }
+for (var i=0, max=all.length; i < max; i++) {
 
-  // if (article.hasAttribute('tagName')){
-    console.log("  DEBUG: " + "tagName " + article.getAttribute("tagName"))
-    console.log("  DEBUG: " + "tagName " + article.tagName)
-  // }
+  //If at least one of its child elements has text    
+  if (!(all[i].textContent === null) && all[i].textContent.length > 0){
 
-  // if (article.hasAttribute('nodeType')){
-    console.log("  DEBUG: " + "nodeType " + article.getAttribute("nodeType"))
-    console.log("  DEBUG: " + "nodeType " + article.nodeType)
-  // }
+    //Find the child element text
+    var children = all[i].childNodes
+    for (var c=0, maxChildren=children.length; c < maxChildren; c++){
 
-  // for (let attr of article.attributes) {
-  //   console.log("  DEBUG: " + attr.name + " = " + attr.value)
-  // }
+      if(children[c].nodeType === Node.TEXT_NODE){
 
-    //NOTE: The name of the variable needs to be quoted
-    //NOTE: Object appears to be a singleton obj
-    //NOTE: This only shows objects directly defined on the class 
-    //      (i.e. the leaf class). It does not show the inherited
-    //      properties.
-    var propArray = Object.getOwnPropertyNames("article")
-    console.log("  DEBUG: " + "leaf props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
+        console.log("DEBUG " + children[c] + " has textContent of length " + children[c].textContent.length + " : " + children[c].textContent)
 
-    var parentObj = Object.getPrototypeOf(article);
-    propArray = Object.getOwnPropertyNames(parentObj)
-    console.log("  DEBUG: " + "parent props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
-
-    var grandparentObj = Object.getPrototypeOf(parentObj);
-    propArray = Object.getOwnPropertyNames(grandparentObj)
-    console.log("  DEBUG: " + "grand parent props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
-
-    var greatgrandparentObj = Object.getPrototypeOf(grandparentObj);
-    propArray = Object.getOwnPropertyNames(greatgrandparentObj)
-    console.log("  DEBUG: " + "great grand parent props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
-
-    var greatgreatgrandparentObj = Object.getPrototypeOf(greatgrandparentObj);
-    propArray = Object.getOwnPropertyNames(greatgreatgrandparentObj)
-    console.log("  DEBUG: " + "great grand parent props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
-
-    var greatgreatgreatgrandparentObj = Object.getPrototypeOf(greatgreatgrandparentObj);
-    propArray = Object.getOwnPropertyNames(greatgreatgreatgrandparentObj)
-    console.log("  DEBUG: " + "great great grand parent props: " + propArray)
-    propArray.forEach((val, idx, array) => {
-      console.log(`${val} -> ${propArray[val]}`);
-    });
-
-
+        children[c].textContent = "GRENADE"
+      }
+    }
+  }
 }
 
 
