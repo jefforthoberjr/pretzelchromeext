@@ -1,0 +1,1 @@
+Why does replacing the textContent cause the styling and the layout of the page to disappear as well?

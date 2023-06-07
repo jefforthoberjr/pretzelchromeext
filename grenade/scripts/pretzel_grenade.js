@@ -1,34 +1,53 @@
 
-var all = document.getElementsByTagName("*");
-//All objs returneed by this are nodeType == ELEMENT_NODE
-// but some of its children may be nodeType == TEXT_NODE
+function currentHumanReadableTime() {
+  var nowMilliseconds = new Date(); 
+  var day = (nowMilliseconds.getDate() + "").padStart(2, '0')
+  var month = ((nowMilliseconds.getMonth()+1) + "").padStart(2, '0')
+  var year = (nowMilliseconds.getFullYear() + "").padStart(4, '0')
+  var hour = (nowMilliseconds.getHours() + "").padStart(2, '0')
+  var min = (nowMilliseconds.getMinutes() + "").padStart(2, '0')
+  var sec = (nowMilliseconds.getSeconds() + "").padStart(2, '0')
 
-for (var i=0, max=all.length; i < max; i++) {
+  var nowHumanReadable = day + "/" + month + "/" + year + " @ " + 
+                        hour + ":" + min + ":" + sec
 
-  //If at least one of its child elements has text    
-  if (!(all[i].textContent === null) && all[i].textContent.length > 0){
-
-    //Find the child element text
-    var children = all[i].childNodes
-    for (var c=0, maxChildren=children.length; c < maxChildren; c++){
-
-      if(children[c].nodeType === Node.TEXT_NODE){
-
-        console.log("DEBUG " + children[c] + " has textContent of length " + children[c].textContent.length + " : " + children[c].textContent)
-
-        children[c].textContent = "GRENADE"
-      }
-    }
-  }
+  return nowHumanReadable
 }
 
+setTimeout(() => main(), 7000)
 
-// `document.querySelector` may return null if the selector doesn't match anything.
-if (article) {
-  article.textContent = "GRENADE";
+function main(){
+  replaceAllTextWithGrenade()
+}
 
-  // const text = article.textContent = "GRENADE";
-  // article.textContent.repalce("the", "GRENADE")
+function replaceAllTextWithGrenade(){
+  var all = document.getElementsByTagName("*");
+  //All objs returned by getElements are nodeType == ELEMENT_NODE
+  // but some of its children may be nodeType == TEXT_NODE
+  //Iterate through all elements, and check for text nodes
 
+  for (var i=0, max=all.length; i < max; i++) {
 
+    //If at least one of its child elements has text    
+    if (!(all[i].textContent === null) && all[i].textContent.length > 0){
+
+      //Find the child element text
+      var children = all[i].childNodes
+      for (var c=0, maxChildren=children.length; c < maxChildren; c++){
+
+        if(children[c].nodeType === Node.TEXT_NODE){
+          // console.log("DEBUG " + children[c] + " has textContent of length " + children[c].textContent.length + " : " + children[c].textContent)
+          children[c].textContent = "GRENADE"
+
+          //TODO 
+          //Debug why setting the textContent appears to blow away styling
+        }
+      }
+    }
+
+  }
+
+  if (article) {
+    article.textContent = "GRENADE";
+  }
 }

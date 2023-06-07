@@ -1,0 +1,13 @@
+git config pull.rebase true
+
+
+Why does replacing the textContent accidentally blowup the css/styling/layout of the page?
+
+	Comparing the DOM before extension and after extension:
+		there are these "::before" elements decorated throughout the DOM normally that seem to get removed with extension.
+
+		It appears the ::before elements are injected into the DOM after/during page load.
+		So maybe the extension is touching the DOM too fast?
+			Try adding a sleep statement to the DOM.
+			Nope; it still blows away the styling after a 7 second delay.
+
