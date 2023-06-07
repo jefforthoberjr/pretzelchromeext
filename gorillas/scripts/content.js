@@ -16,9 +16,7 @@ if (article) {
   //insert line about styling here
   //badge.classList.add("color-secondary-text", "type--caption");
 
-  // Support for API reference docs
   const authorBio = article.querySelector("div.has-bio");
-  // Support for article docs with date
   const authorOverlay = article.querySelector("div.author-overlay")?.parentNode;
 
   (authorBio ?? authorOverlay).insertAdjacentElement("afterend", badge);
