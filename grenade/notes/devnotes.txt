@@ -11,3 +11,15 @@ Why does replacing the textContent accidentally blowup the css/styling/layout of
 			Try adding a sleep statement to the DOM.
 			Nope; it still blows away the styling after a 7 second delay.
 
+		The text Content of the children nodes seems to include non human text stuff:
+			* looks like embedded js functions 
+			* looks like style information
+
+		So, why is it that style information appears as "textContent"
+
+
+How can I iterate through a CSSStyleDeclaration obj?
+	CSSStyleDeclaration.length	//attribute
+	CSSStyleDeclaration.item()	//property
+
+

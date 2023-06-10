@@ -30,13 +30,27 @@ function replaceAllTextWithGrenade(){
 
     //If at least one of its child elements has text    
     if (!(all[i].textContent === null) && all[i].textContent.length > 0){
+    
+      var styleObj = window.getComputedStyle(all[i])
+
+      //Print out all the style information
+      for (var s=0, max=styleObj.length; s < max; s++) {
+        console.log("DEBUG " + "style " + styleObj.item(s) ) 
+        //NOTE: this only prints out the named of the style element;
+        //      but it doesn't print out the actual value of the style
+      }
 
       //Find the child element text
       var children = all[i].childNodes
       for (var c=0, maxChildren=children.length; c < maxChildren; c++){
 
         if(children[c].nodeType === Node.TEXT_NODE){
-          // console.log("DEBUG " + children[c] + " has textContent of length " + children[c].textContent.length + " : " + children[c].textContent)
+
+          //How can I detect if a textContent is a "style" or "function"
+
+
+          console.log("DEBUG " + children[c] + " has textContent of length " + children[c].textContent.length + " : " + children[c].textContent)
+
           children[c].textContent = "GRENADE"
 
           //TODO 
@@ -47,7 +61,7 @@ function replaceAllTextWithGrenade(){
 
   }
 
-  if (article) {
-    article.textContent = "GRENADE";
-  }
+  //How can I use ::before and ::after to inject text highlighing? 
+
+
 }
